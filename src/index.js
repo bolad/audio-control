@@ -62,6 +62,16 @@ const AudioControlsWithMultipleVariables = () => {
   );
 };
 
+// This version stores the state in a single object
+const AudioControlWithOneObject = () => {
+  const [{ volume, bass, mid, treble }, setValues] = useState({
+    volume: 53,
+    bass: 17,
+    mid: 50,
+    treble: 25
+  });
+};
+
 ReactDOM.render(
   <>
     <h1>With Multiple Variables</h1>
