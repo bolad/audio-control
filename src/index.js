@@ -70,12 +70,64 @@ const AudioControlWithOneObject = () => {
     mid: 50,
     treble: 25
   });
+
+  const increase = key => () => {
+    setValues(values => ({
+      ...values,
+      [key]: values[key] + 1
+    }));
+  }
+
+  const decrease = key => () => {
+    setValues(values => ({
+      ...values,
+      [key]: values[key] - 1
+    }));
+  }
+
+  return <div className="audio-controls">
+    <Control
+      value={volume}
+      onIncrease={increase('volume')}
+      onDecrease={decrease('volume')}
+    >
+      VOLUME
+    </Control>
+
+    <Control
+      value={treble}
+      onIncrease={increase('treble')}
+      onDecrease={decrease('treble')}
+    >
+      TREBLE
+    </Control>
+
+    <Control
+      value={mid}
+      onIncrease={increase('mid')}
+      onDecrease={decrease('mid')}
+    >
+      MID
+    </Control>
+
+    <Control
+      value={bass}
+      onIncrease={increase('bass')}
+      onDecrease={decrease('bass')}
+    >
+      BASS
+    </Control>
+
+  </div>
 };
 
 ReactDOM.render(
   <>
     <h1>With Multiple Variables</h1>
     <AudioControlsWithMultipleVariables />
+
+    <h1>With One Object</h1>
+    <AudioControlWithOneObject />
   </>,
   document.querySelector('#root')
 );
