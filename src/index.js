@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
 
 const Control = ({
   value,
@@ -10,8 +11,8 @@ const Control = ({
   <div className="control">
     <button onClick={onDecrease}>&ndash;</button>
     <div>
-      <span> className="value">{value}</span>
-      <span> className="label">{children}</span>
+      <span className="value">{value}</span>
+      <span className="label">{children}</span>
     </div>
     <button onClick={onIncrease}>+</button>
   </div>
@@ -22,16 +23,40 @@ const AudioControlsWithMultipleVariables = () => {
   const [volume, setVolume] = useState(47);
   const [treble, setTreble] = useState(13);
   const [mid, setMid] = useState(35);
-  const [bass, setBass] = useState(50);
+  const [bass, setBass] = useState(98);
 
   return (
     <div className="audio-controls">
       <Control
         value={volume}
-        onIncrease={() => setVolume(volume + 1)}
-        onDecrease={() => setVolume(volume - 1)}
+        onIncrease={ () => setVolume(volume + 1) }
+        onDecrease={ () => setVolume(volume - 1) }
       >
         VOLUME
+      </Control>
+
+      <Control
+        value={treble}
+        onIncrease={ () => setTreble(treble + 1) }
+        onDecrease={ () => setTreble(treble - 1) }
+      >
+        TREBLE
+      </Control>
+
+      <Control
+        value={mid}
+        onIncrease={ () => setMid(mid + 1) }
+        onDecrease={ () => setMid(mid - 1) }
+      >
+        MID
+      </Control>
+
+      <Control
+        value={bass}
+        onIncrease={ () => setBass(bass + 1) }
+        onDecrease={ () => setBass(bass - 1) }
+      >
+        BASS
       </Control>
     </div>
   );
